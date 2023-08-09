@@ -1,7 +1,25 @@
 import React from "react";
-import menuIcon from '../../images/menu-icon.svg'
+import menuIcon from '../../images/menu-icon.svg';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from "firebase/auth";
+import { auth } from '../../firebase';
 
 function DashboardHeader(props) {
+   // Get the navigate object
+   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("User signed out");
+        navigate('/'); // Navigate to the "/" page after logout
+      })
+      .catch((error) => {
+        console.error("Error during sign-out:", error);
+        // Handle the error (e.g., display a message to the user)
+      });
+  };
+
   return (
     <>
       <div className="dash-header">
@@ -12,7 +30,7 @@ function DashboardHeader(props) {
           >
             <img src={menuIcon} alt="menu" />
           </div>
-          <div className="header-logout">Logout</div>
+          <div className="header-logout" onClick={handleLogout}>Logout</div>
         </div>
       </div>
     </>
