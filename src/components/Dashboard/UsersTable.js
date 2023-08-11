@@ -53,7 +53,8 @@ function UsersTable() {
       userData.universityName
         .toLowerCase()
         .includes(searchKeyword.toLowerCase()) ||
-      userData.phoneNo.includes(searchKeyword)
+      userData.phoneNo.includes(searchKeyword) ||
+      userData.country.toLowerCase().includes(searchKeyword.toLowerCase())
   );
 
   const searchResultCount = filteredUserData.length;
@@ -131,6 +132,10 @@ function UsersTable() {
                   <span className="text-gray-100 font-semibold">Phone No</span>
                 </th>
 
+                <th className=" py-4 text-left px-6 bg-black">
+                  <span className="text-gray-100 font-semibold">Country</span>
+                </th>
+
                 <th className=" py-4 text-left px-6 bg-black rounded-e-lg">
                   <span className="text-gray-100 font-semibold">Action</span>
                 </th>
@@ -184,6 +189,12 @@ function UsersTable() {
                     <td>
                       <span className="text-left block px-6">
                         {userData.phoneNo}
+                      </span>
+                    </td>
+
+                    <td>
+                      <span className="text-left block px-6">
+                        {userData.country}
                       </span>
                     </td>
 
