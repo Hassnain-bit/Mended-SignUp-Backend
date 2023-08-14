@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';  
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import logo from "../images/logo.svg";
 
-const AdminSignIn = () => {
+const AdminSignIn = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +19,13 @@ const AdminSignIn = () => {
         const user = userCredential.user;
         console.log("User signed in:", user);
         // Additional actions after successful sign-in
-        navigate('/dashboard');
+        // Update local storage and state
+        localStorage.setItem("isLoggedIn", true);
+        props.setisLoggedIn(true);
+        navigate("/dashboard");
+        //Signin Success
+
+        // window.location.pathname = "/";
       })
       .catch((error) => {
         const errorCode = error.code;

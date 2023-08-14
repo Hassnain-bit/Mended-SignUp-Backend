@@ -3,7 +3,7 @@ import NavbarVertical from "../components/Layout/NavbarVertical";
 import DashboardHeader from "../components/Layout/DashboardHeader";
 import UsersTable from "../components/Dashboard/UsersTable";
 
-function Dashboard() {
+function Dashboard(props) {
   const [controlNavbar, setControlNavbar] = useState(false);
   return (
     <>
@@ -14,6 +14,7 @@ function Dashboard() {
           <DashboardHeader
             controlNavbar={controlNavbar}
             setControlNavbar={setControlNavbar}
+            setisLoggedIn={props.setisLoggedIn}
           />
 
           <div className="py-12 px-6">
