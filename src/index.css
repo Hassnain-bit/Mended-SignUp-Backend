@@ -139,3 +139,14 @@ body {
   padding: 0.4rem 1rem;
   border-radius: 8px;
 }
+
+
+/* DELETE IT */
+.editor.bullet-list ul{
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.active {
+  background-color: lightgray;
+}
