@@ -139,17 +139,3 @@ body {
   padding: 0.4rem 1rem;
   border-radius: 8px;
 }
-
-/* DELETE IT */
-.editor{
-  padding: 2rem;
-}
-
-.editor ul{
-  list-style: disc;
-  list-style-position: inside;
-}
-
-.active {
-  background-color: lightgray;
-}
