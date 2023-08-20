@@ -33,12 +33,20 @@ function TextEditor() {
   const handleToggleHighlight = () => {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
-    
-    const span = document.createElement('span');
-    span.style.backgroundColor = 'yellow';
-    
-    range.surroundContents(span);
+  
+    // Check if the selected text is already highlighted
+    const parentNode = range.commonAncestorContainer.parentNode;
+    const isHighlighted = parentNode.style.backgroundColor === 'yellow';
+  
+    if (isHighlighted) {
+      parentNode.style.backgroundColor = ''; // Remove the highlight
+    } else {
+      const span = document.createElement('span');
+      span.style.backgroundColor = 'yellow';
+      range.surroundContents(span);
+    }
   };
+  
 
   return (
     <div className="p-4">
