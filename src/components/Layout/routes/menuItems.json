@@ -3,6 +3,10 @@
     {
       "name": "Users",
       "url": "/dashboard"
+    },
+    {
+      "name": "Become Mender",
+      "url": "/becomeMender"
     }
   ]
 }

@@ -3,8 +3,9 @@ import AdminSignIn from "./pages/AdminSignIn";
 import Dashboard from "./pages/Dashboard";
 import Protected from "./components/Protected";
 import { useState } from "react";
-import ImagePage from "./pages/ImagePage";
-import SubmitForm from "./pages/SubmitForm";
+import BecomeMender from "./pages/BecomeMender";
+import UserCardPage from "./pages/BecomeMenderNew";
+import BecomeMenderTableNew from "./pages/BecomeMenderNew";
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
@@ -24,13 +25,26 @@ function App() {
               }
             />
             <Route
+              path="/becomeMender"
+              element={
+                <Protected isLoggedIn={isLoggedIn}>
+                  <BecomeMender setisLoggedIn={setisLoggedIn} />
+                </Protected>
+              }
+            />
+            <Route
+              path="/becomeMenderNew"
+              element={
+                <Protected isLoggedIn={isLoggedIn}>
+                  <BecomeMenderTableNew setisLoggedIn={setisLoggedIn} />
+                </Protected>
+              }
+            />
+
+            <Route
               path="/"
               element={<AdminSignIn setisLoggedIn={setisLoggedIn} />}
             />
-
-            <Route path="/image" element={<ImagePage />} />
-
-            <Route path="/submitForm" element={<SubmitForm />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useLocation  } from "react-router-dom"; // Import Link from react-router-dom
 import menuItems from "./routes/menuItems.json";
 import logo from '../../images/logo.svg'
 
 const NavbarVertical = () => {
   const [state, setState] = useState({});
-  const [activeItem, setActiveItem] = useState("/dashboard"); // Set the initial active item to "/dashboard"
+  const location = useLocation(); // Get the current location object
+  const currentUrl = location.pathname; // Get the current URL path
 
   const handleClick = (item, url) => {
     setState((prevState) => ({
@@ -21,14 +22,13 @@ const NavbarVertical = () => {
 
     return children.map((subOption) => {
       if (!subOption.children) {
-        const isActive = activeItem === subOption.url; // Check against the "url" property
+        const isActive = currentUrl === subOption.url; // Compare with the current URL
 
         return (
           <div className="nav-item" key={subOption.name}>
             <Link
               className={`nav-link ${isActive ? "active" : ""}`}
               to={subOption.url}
-              onClick={() => setActiveItem(subOption.url)}
             >
               {/* <i className={`${subOption.icon} nav-icon me-2`}></i> */}
               <span className="">{subOption.name}</span>
@@ -38,7 +38,7 @@ const NavbarVertical = () => {
       }
 
       const isParentActive = subOption.children.some(
-        (child) => activeItem === child.url
+        (child) => currentUrl === child.url
       );
 
       return (
