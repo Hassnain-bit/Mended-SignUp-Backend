@@ -38,7 +38,7 @@ function UserModal({ userData, onClose }) {
               onClick={userData.resumePdfUrl}
               ImageURL={userData.resumePdfUrl}
               buttonName="PDF"
-              className="mt-0"
+              className="h-full"
             />
 
             <Input label="Cover Letter" InputName={userData.coverLetter} />
